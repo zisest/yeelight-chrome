@@ -1,3 +1,7 @@
+function sendToExtension(message){
+  chrome.runtime.sendMessage('bomaljpbicebhiaibfadkgpfbnkcpofh', message)
+}
+
 function rtm(message, callback) {
   if (callback) {
     chrome.runtime.sendMessage(chrome.runtime.id, message, callback);
@@ -7,13 +11,14 @@ function rtm(message, callback) {
   }
 }
 
-function addDevice(did, location) {
+function addDevice(did, location, model, name) {
   var devList = document.getElementById('led-list');
   var devItem = document.createElement('li');
 
-  devItem.textContent = did + ' @ ' + location;
+  devItem.textContent = did + ' @ ' + location + '@' + model + '@' + name;
   devItem.id = did;
   devList.appendChild(devItem);
+
 }
 
 function sendMessage() {
@@ -101,8 +106,19 @@ function init() {
 
 
 chrome.runtime.onMessageExternal.addListener(function (message, sender, sendResponse) {
-  console.log(message)
-    sendMessageArgs(message.message)
+  switch(message.type){
+    case 'ext-request':
+      sendMessageArgs(message.message)
+      break
+    case 'yee-stop':
+      chrome.app.window.current().close()
+      controlClient.disconnect();
+      break
+    case 'yee-connect':
+      rtm({type: 'connect', message: 'Contacting [' + message.message + '] ...', target: message.message})
+    default:
+      console.log(message)
+  }
 })
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   var newMessageLi;
@@ -113,11 +129,12 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         init();
         break;
     case 'add-device':
-        addDevice(message.did, message.location);
+        addDevice(message.did, message.location, message.model, message.name);
+        sendToExtension(message)
         break;   
     case 'info':
         //redir to extension
-        chrome.runtime.sendMessage('boddohldkldchjpgndlfclibogdoldnc', message.message)
+        sendToExtension(message)
         //
         newMessageLi = document.createElement('li');
         newMessageLi.textContent = message.message;

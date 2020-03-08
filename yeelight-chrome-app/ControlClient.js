@@ -36,6 +36,8 @@ proto.onDiagram = function (message) {
 proto.addDevice = function (message) {
     did = "";
     loc = "";
+    model = "";
+    name = "";
 
     headers = message.split("\r\n");
     for (i = 0; i < headers.length; i++) {
@@ -43,6 +45,10 @@ proto.addDevice = function (message) {
             did = headers[i].slice(4);
         if (headers[i].indexOf("Location:") >= 0)
             loc = headers[i].slice(10);
+        if (headers[i].indexOf("model:") >= 0)
+            model = headers[i].slice(7);
+        if (headers[i].indexOf("name:") >= 0)
+            name = headers[i].slice(6);
     }
     if (did == "" || loc == "")
         return;
@@ -51,13 +57,13 @@ proto.addDevice = function (message) {
         return;
     } else {
         loc = loc.split("//")[1];
-        this.leds[did] = {did:did, location:loc, connected:false, socket:-1};
+        this.leds[did] = {did:did, location:loc, model:model, name:name, connected:false, socket:-1};
         this.nr_leds++;
     }
-    this.onAddDevice(did, loc);
+    this.onAddDevice(did, loc, model, name);
 };
 
-proto.onAddDevice = function (did, loc) {
+proto.onAddDevice = function (did, loc, model, name) {
 };
 
 proto.onResult = function (result) {

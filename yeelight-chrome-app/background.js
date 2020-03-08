@@ -11,7 +11,7 @@ function rtm(message, callback) {
 }
 
 function onInitWindow(appWindow) {
-    appWindow.show();
+    //appWindow.show(); //comment it out
     var document = appWindow.contentWindow.document;
     document.addEventListener('DOMContentLoaded', function () {
         controlClient.scan();
@@ -53,7 +53,9 @@ function initClient() {
     rtm({
       type: 'add-device',
       did: did,
-      location: location
+      location: location,
+      model: model,
+      name: name
     });
   };
   cc.onResult = function (result) {
@@ -76,17 +78,22 @@ function initClient() {
   };        
   controlClient = cc;
 }
-/*
-chrome.app.runtime.onLaunched.addListener(function () {
-    initClient();
-    createMainWindow();
-});
-*/
-chrome.runtime.onStartup.addListener(function() {
-  initClient();
-  createMainWindow();
-})
 
+
+
+
+
+
+chrome.runtime.onMessageExternal.addListener(function (message, sender, sendResponse) {  
+  switch(message.type){
+    case 'yee-start':
+      initClient()
+      createMainWindow()
+      break    
+    default:
+      break
+  }
+})
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message) {
     switch (message.type) {
