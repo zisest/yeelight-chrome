@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Yeelight Chrome",
+  "description": "This extension is a starting point to create a real Chrome extension",
+  "version": "0.0.1",
+
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Open light controls"
+  },
+  "icons": {
+    "16": "logo-small.png",
+    "48": "logo-small.png",
+    "128": "logo-small.png"
+  },
+  "content_security_policy": "script-src 'self' 'sha256-G6kYpOq+OKySW3OTmQOUW4UwhSyeh9BkYeTnGysLO1U='; object-src 'self'",
+  "permissions": [
+  ]
+}
