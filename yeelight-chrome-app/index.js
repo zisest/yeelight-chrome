@@ -1,5 +1,6 @@
+const extensionID = 'kneagfiodgcjdmdgfbpldheamiogbekk'
 function sendToExtension(message){
-  chrome.runtime.sendMessage('kneagfiodgcjdmdgfbpldheamiogbekk', message)
+  chrome.runtime.sendMessage(extensionID, message)
 }
 
 function rtm(message, callback) {

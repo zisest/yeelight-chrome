@@ -10,6 +10,8 @@ import ControlPage from './views/control-page/ControlPage'
 const debounce = require('lodash.debounce')
 const Color = require('color')
 
+const companionAppID = 'faihiebhnlbimhchcbopcpbkgagheblm'
+
 function App() {  
   const [appStatus, setAppStatus] = useState('WelcomePage')
   const [devices, setDevices] = useState([])
@@ -46,7 +48,7 @@ function App() {
   
 
   const sendToApp = (message) => {
-    chrome.runtime.sendMessage('faihiebhnlbimhchcbopcpbkgagheblm', message)
+    chrome.runtime.sendMessage(companionAppID, message)
   }
   const sendRequest = (method, params = []) => {
     sendToApp({type: 'ext-request', message: JSON.stringify({"id":reqID,"method":method,"params":params})})
