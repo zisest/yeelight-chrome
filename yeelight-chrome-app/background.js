@@ -15,6 +15,7 @@ function onInitWindow(appWindow) {
     var document = appWindow.contentWindow.document;
     document.addEventListener('DOMContentLoaded', function () {
         controlClient.scan();
+        console.log('scan')
         rtm({
                 type: 'init'
             });
@@ -90,6 +91,8 @@ chrome.runtime.onMessageExternal.addListener(function (message, sender, sendResp
       initClient()
       createMainWindow()
       break    
+    case 'yee-stop':
+      controlClient.disconnect();
     default:
       break
   }

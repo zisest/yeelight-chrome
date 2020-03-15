@@ -1,0 +1,26 @@
+.device{
+    height: 39px;
+    width: 325px;
+    display: grid;
+    grid-template-columns: 35px 155px 115px;
+    grid-column-gap: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #dedede;
+}
+.device:hover{
+    cursor: pointer;
+    background-color: rgba(112, 142, 160, 0.03);
+}
+.device:last-child{
+    border: none;
+}
+.device > * {
+    display: flex;
+    align-items: center;
+}
+.device__address{
+    color: var(--grey);
+}
+.device__icon{
+    justify-content: center;
+}

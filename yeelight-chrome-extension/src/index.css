@@ -1,6 +1,10 @@
 body {
   width: 400px;
   height: 270px;
-  border-radius: 8px;
+  margin: 0px;
+  margin-left: 1.5px;
+}
+#root{
+  height: 100%;
 }
 

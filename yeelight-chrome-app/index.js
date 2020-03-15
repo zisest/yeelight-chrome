@@ -1,5 +1,5 @@
 function sendToExtension(message){
-  chrome.runtime.sendMessage('bomaljpbicebhiaibfadkgpfbnkcpofh', message)
+  chrome.runtime.sendMessage('kneagfiodgcjdmdgfbpldheamiogbekk', message)
 }
 
 function rtm(message, callback) {
@@ -39,17 +39,18 @@ function sendMessageArgs(message) {
 }
 
 function init() {
-    var messageInputBox = document.getElementById('input-box');
-    messageInputBox.addEventListener('keydown', function (e) {
-        if (e.keyCode == 13) {
-            sendMessage();
-        }
-    });
+  console.log('init')
+  var messageInputBox = document.getElementById('input-box');
+  messageInputBox.addEventListener('keydown', function (e) {
+      if (e.keyCode == 13) {
+          sendMessage();
+      }
+  });
 
-    let toggleButton = document.getElementById('toggle-lights')
-    toggleButton.addEventListener('click', function() {
-      sendMessageArgs(JSON.stringify({"id":1,"method":"toggle","params":[]}))
-    })
+  let toggleButton = document.getElementById('toggle-lights')
+  toggleButton.addEventListener('click', function() {
+    sendMessageArgs(JSON.stringify({"id":1,"method":"toggle","params":[]}))
+  })
 
   var closeBox = document.getElementById('close');
   closeBox.onclick = function () {

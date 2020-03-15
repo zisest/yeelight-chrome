@@ -1,0 +1,19 @@
+:root {
+    --grey: #505354;
+    --dark-grey: #313435;
+    --dark-blue: #325661;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300i,300,400,400i&display=swap');
+
+.app *{
+  font-family: 'Roboto', sans-serif;
+}
+.app {
+  color: var(--dark-grey);
+  height: 100%;
+}
+a {
+  color: inherit;
+  outline: none;
+}

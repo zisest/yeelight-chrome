@@ -1,0 +1,40 @@
+.welcome-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.welcome-page__message{
+    color: var(--dark-blue);
+    width: 230px;
+    text-align: center;
+    font-size: 14px;
+}
+.welcome-page__scan-button{
+    width: 105px;
+    height: 35px;
+    margin: 10px auto;
+    border-radius: 8px;
+    background-color: var(--dark-blue);
+    font-size: 16px;
+    color: white;
+    outline: none;
+    border: none;
+}
+.welcome-page__scan-button:hover{
+    cursor: pointer;
+}
+
+.welcome-page__tip{
+    width: 200px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--grey);
+    font-style: italic;
+    font-weight: 300;
+}
+.welcome-page__tip > span{
+    font-weight: 400;
+}
