@@ -1,6 +1,6 @@
 # Yeelight Chrome extension
 <img src="https://zisest.ru/files/yeelight-chrome-logo.png" align="right"
-     title="Where Do I Sit? logo" width="266" height="81">
+     title="Yeelight Chrome logo" width="266" height="81">
      
 This Chrome extension seems to be the simplest way to control your Xiaomi Yeelight smart bulbs from a PC.
 ## About
